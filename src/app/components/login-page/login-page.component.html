@@ -1,0 +1,9 @@
+<div>
+    <h1>Login to acc</h1>
+    <button (click)="login()" >Login</button>
+</div>
+<div *ngIf="auth.user$ | async as user">
+    <h3>Hello {{ user.displayName }}</h3>
+    <img [src]="user.photoURL" alt="">
+    <button (click)="auth.logout()" >Log out</button>
+</div>
