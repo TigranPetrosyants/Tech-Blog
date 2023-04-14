@@ -1,0 +1,9 @@
+<ul>
+    <div *ngFor="let page of pages$ | async">
+        <h3> Title {{ page.title }} </h3>
+        <p> Description {{ page.description }} </p>
+        <div>
+            <a [href]="page.url">Click</a>
+        </div>
+    </div>
+</ul>
