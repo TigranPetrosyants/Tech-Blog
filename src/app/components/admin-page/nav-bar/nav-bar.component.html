@@ -5,7 +5,7 @@
 
 
         <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Article Page</button>
-        <button mat-button [routerLink]="['/admin']">Admin</button>
+        <button mat-button *ngIf="user?.roles.admin" [routerLink]="['/admin']">Admin</button>
 
         <div *ngIf="!user">
             <button mat-button (click)="auth.loginWithGoogle()">Login</button>

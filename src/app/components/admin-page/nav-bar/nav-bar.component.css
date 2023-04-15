@@ -1,0 +1,17 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.profileImg {
+    max-height: 30px;
+    max-width: 30px;
+}
+
+.userContainer{
+    display: flex;
+    align-items: center;
+}
+
+.userContainer>img {
+    padding: 5px;
+}
