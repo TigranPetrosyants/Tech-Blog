@@ -1,7 +1,9 @@
-<a [routerLink]="['/']">Home Page</a>
-<a [routerLink]="['/login']">Login Page</a>
-<a [routerLink]="['/article']">Article Page</a>
-<a [routerLink]="['/admin']">Admin</a>
+<div>
+    <a [routerLink]="['/']">Home Page</a>
+    <a [routerLink]="['/login']">Login Page</a>
+    <a *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Article Page</a>
+    <a *ngIf="user?.roles.admin" [routerLink]="['/admin']">Admin</a>
+</div>
 <div *ngIf="user">
     <h3>Hello {{ user.displayName }}</h3>
     <img [src]="user.photoURL" alt="">

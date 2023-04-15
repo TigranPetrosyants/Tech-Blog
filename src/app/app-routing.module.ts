@@ -9,7 +9,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { SubscriberGuard } from './guards/subscriber.guard';
 
 const routes: Routes = [
-  {path: "", component: HomePageComponent},
+  {path: "", component: HomePageComponent, pathMatch: 'full'},
   {path: "login", component: LoginPageComponent},
   {path: "article", component: PagesListComponent, canActivate: [SubscriberGuard]},
   {path: "admin", component: AdminPageComponent, canActivate: [AdminGuard]}
