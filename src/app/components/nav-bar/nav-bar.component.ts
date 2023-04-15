@@ -3,11 +3,11 @@ import { AuthService } from 'src/app/providers/auth.service';
 import { User } from 'src/app/providers/user';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  selector: 'app-navbar',
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.css']
 })
-export class LoginPageComponent implements OnInit {
+export class NavBarComponent implements OnInit {
   user: User;
 
   constructor(public auth: AuthService) {
@@ -15,9 +15,4 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.auth.user$.subscribe(user => this.user = user)
   }
-
-  login(): void {
-      this.auth.loginWithGoogle();
-  }
-
 }
