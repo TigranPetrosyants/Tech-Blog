@@ -3,10 +3,6 @@
         <button mat-button [routerLink]="['/']">Tech Blog</button>
         <span class="spacer"></span>
 
-
-        <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Article Page</button>
-        <button mat-button *ngIf="user?.roles.admin" [routerLink]="['/admin']">Admin</button>
-
         <div *ngIf="!user">
             <button mat-button (click)="auth.loginWithGoogle()">Login</button>
         </div>
@@ -32,12 +28,3 @@
 
     </mat-toolbar-row>
   </mat-toolbar>
-
-<div>
-
-</div>
-
-<div *ngIf="user">
-    <p>Subscriber: {{ user.roles.subscriber }} </p>
-    <p>Admin: {{ user.roles.admin ? user.roles.admin : false }}</p>
-</div>
