@@ -1,4 +1,5 @@
 export interface Post {
     title: string,
-    url: string
+    menu_id: string,
+    content: string
 }

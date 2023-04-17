@@ -7,6 +7,7 @@ import { MenusService } from 'src/app/services/menus/menus.service';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { EditMenuComponent } from './edit-menu/edit-menu.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-menus',
@@ -20,6 +21,8 @@ export class MenusComponent implements OnInit, AfterViewInit {
     url: ''
   }
 
+  postForm: FormGroup;
+
   displayedColumns: string[] = ['id', 'title', 'url', 'actions'];
   dataSource = new MatTableDataSource();
 
@@ -28,8 +31,14 @@ export class MenusComponent implements OnInit, AfterViewInit {
 
   constructor(
     private menus: MenusService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder
     ) {
+      this.postForm = this.fb.group({
+        title: ['', Validators.required],
+        url: ['', Validators.required]      
+      })
+
   }
 
   ngOnInit(): void {
@@ -55,7 +64,9 @@ export class MenusComponent implements OnInit, AfterViewInit {
   }
 
   addMenu() {
-    this.menus.addMenu(this.menuDeteils);
+    if (this.postForm.valid) {
+      this.menus.addMenu(this.postForm.value);
+    }
   }
 
   editMenu(menuId: string, menu: Menu) {
@@ -83,7 +94,7 @@ export class MenusComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== "false") {
+      if (result !== "false" && result) {
         this.editMenu(menuId, result)
       }
     });
