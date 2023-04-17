@@ -8,6 +8,7 @@ import { AuthService } from '../providers/auth.service';
 })
 export class AdminGuard implements CanActivate {
   constructor(
+    private router: Router,
     private auth: AuthService
     ) {  }
 
@@ -21,6 +22,7 @@ export class AdminGuard implements CanActivate {
       tap(admin => {
         if (!admin) {
           console.error('Access denied');
+          this.router.navigate([''])
         }
       })
     );

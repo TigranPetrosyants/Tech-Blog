@@ -7,6 +7,7 @@ import { AdminPageComponent } from './admin-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MenusComponent } from './menus/menus.component';
 import { PostsComponent } from './posts/posts.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { PostsComponent } from './posts/posts.component';
   imports: [
     CommonModule,
     MaterialModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminPageModule { }
