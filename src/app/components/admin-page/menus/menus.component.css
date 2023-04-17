@@ -15,3 +15,10 @@ td, th {
 .add_button {
     margin: 0px 0px 20px 20px;
 }
+
+
+.mat-column-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
