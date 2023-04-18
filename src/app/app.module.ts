@@ -6,11 +6,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { PagesListComponent } from './components/pages-list/pages-list.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from "@angular/common/http";
@@ -18,10 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
-    PagesListComponent,
-    LoginPageComponent,
-    NavBarComponent,
-    HomePageComponent  
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
