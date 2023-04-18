@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/providers/auth.service';
+import { Menu } from 'src/app/providers/menu';
 import { User } from 'src/app/providers/user';
+import { MenusService } from 'src/app/services/menus/menus.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +11,15 @@ import { User } from 'src/app/providers/user';
 })
 export class NavBarComponent implements OnInit {
   user: User;
+  menuList: Menu[];
 
-  constructor(public auth: AuthService) {
+  constructor(
+    public auth: AuthService,
+    private menus: MenusService
+    ) {
   }
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => this.user = user)
+    this.auth.user$.subscribe(user => this.user = user);
+    this.menus.getMenus().subscribe(menus => this.menuList = menus);
   }
 }

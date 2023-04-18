@@ -3,10 +3,11 @@
         <button mat-button [routerLink]="['/']">Tech Blog</button>
         <span class="spacer"></span>
 
+        <div *ngFor="let menu of menuList">
+          <button mat-button [routerLink]="'pages/' + menu.url"> {{ menu.title | titlecase }} </button>
+        </div>
 
         <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Article Page</button>
-        <button mat-button [routerLink]="['/admin']">Admin</button>
-
         <div *ngIf="!user">
             <button mat-button (click)="auth.loginWithGoogle()">Login</button>
         </div>
@@ -35,9 +36,4 @@
 
 <div>
 
-</div>
-
-<div *ngIf="user">
-    <p>Subscriber: {{ user.roles.subscriber }} </p>
-    <p>Admin: {{ user.roles.admin ? user.roles.admin : false }}</p>
 </div>

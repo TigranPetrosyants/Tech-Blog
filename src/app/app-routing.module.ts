@@ -13,7 +13,7 @@ const routes: Routes = [
     path: "", 
     loadChildren: () => import('./components/front-page/front-page.module').then(m => m.FrontPageModule)
   },
-  {path: "login", component: LoginPageComponent},
+  { path: "login", component: LoginPageComponent },
 
 ];
 
