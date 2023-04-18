@@ -8,7 +8,7 @@
 
     <mat-form-field>
       <mat-select placeholder="Select Menu" [(ngModel)]="data.menu_id">
-        <mat-option *ngFor="let menu of data.menus" [value]="menu.title">
+        <mat-option *ngFor="let menu of data.menus" [value]="menu.id">
           {{menu.title}}
         </mat-option>
     </mat-select>    </mat-form-field>

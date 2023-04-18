@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <button mat-button [routerLink]="['/']">Tech Blog</button>
+        <button mat-button [routerLink]="['/']">JS Tech Blog</button>
         <span class="spacer"></span>
 
         <div *ngFor="let menu of menuList">
-          <button mat-button [routerLink]="'pages/' + menu.url"> {{ menu.title | titlecase }} </button>
+          <button mat-button [routerLink]="'pages/' + menu.url"> {{ menu.title }} </button>
         </div>
 
-        <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Article Page</button>
+        <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Pro Blog</button>
         <div *ngIf="!user">
             <button mat-button (click)="auth.loginWithGoogle()">Login</button>
         </div>
