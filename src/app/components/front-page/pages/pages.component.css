@@ -12,6 +12,23 @@ mat-card {
     width: 90%;
 }
 
+@media screen and (max-width: 1264px)  {
+    .cards {
+        column-count: 2;
+        column-gap: 1;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 725px)  {
+    .cards {
+        column-count: 1;
+        column-gap: 1;
+        padding: 10px;
+    }
+}
+
+
 .cards {
     background: #c2e59c; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #c2e59c, #64b3f4); /* Chrome 10-25, Safari 5.1-6 */
