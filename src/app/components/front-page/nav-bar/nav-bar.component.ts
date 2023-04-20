@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/providers/auth.service';
 import { Menu } from 'src/app/providers/menu';
 import { User } from 'src/app/providers/user';
@@ -12,6 +12,9 @@ import { MenusService } from 'src/app/services/menus/menus.service';
 export class NavBarComponent implements OnInit {
   user: User;
   menuList: Menu[];
+  mobile: boolean = false;
+
+  public getScreenWidth: any;  
 
   constructor(
     public auth: AuthService,
@@ -21,5 +24,13 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.auth.user$.subscribe(user => this.user = user);
     this.menus.getMenus().subscribe(menus => this.menuList = menus);
+
+    this.getScreenWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+
+  onWindowResize() {
+    this.getScreenWidth = window.innerWidth;
   }
 }

@@ -15,3 +15,26 @@
 .userContainer>img {
     padding: 5px;
 }
+
+.navList{
+    display: flex;
+}
+
+mat-drawer-container{
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.example-sidenav{
+    top: 52px;
+    opacity: 0.95;
+}
+
+.ng-star-inserted{
+    display: flex;
+}
+
+app-mobile-nav-bar{
+    display: flex;
+}
+

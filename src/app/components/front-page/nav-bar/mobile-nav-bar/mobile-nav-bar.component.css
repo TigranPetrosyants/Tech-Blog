@@ -1,0 +1,20 @@
+mat-drawer-container{
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
+.profileImg {
+    max-height: 30px;
+    max-width: 30px;
+}
+
+.userContainer{
+    display: flex;
+    align-items: center;
+}
+
+.example-sidenav{
+    top: 52px;
+    opacity: 0.95;
+}

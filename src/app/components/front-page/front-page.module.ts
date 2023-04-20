@@ -7,6 +7,7 @@ import { FrontPageComponent } from './front-page.component';
 import { MaterialModule } from 'src/app/material.module';
 import { PagesComponent } from './pages/pages.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { MobileNavBarComponent } from './nav-bar/mobile-nav-bar/mobile-nav-bar.component';
 
 
 
@@ -16,7 +17,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     HomePageComponent,
     FrontPageComponent,
     NavBarComponent,
-    PagesComponent
+    PagesComponent,
+    MobileNavBarComponent
   ],
   imports: [
     CommonModule,
