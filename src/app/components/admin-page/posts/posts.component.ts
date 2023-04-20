@@ -27,7 +27,6 @@ export class PostsComponent implements OnInit, AfterViewInit {
 
   menusList: Menu[];
 
-  postForm: FormGroup;
 
   displayedColumns: string[] = ['id', 'title', 'menu_id', 'content', 'actions'];
   dataSource = new MatTableDataSource();
@@ -35,17 +34,21 @@ export class PostsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  POST_VALIDATION_RULES = {
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    menu_id: ['', Validators.required],
+    content: ['', Validators.required, Validators.minLength(10)]
+  };
+
+  postForm: FormGroup;
+
   constructor(
     private menus: MenusService,
     private posts: PostService,
     public dialog: MatDialog,
     private fb: FormBuilder
     ) {
-      this.postForm = this.fb.group({
-        title: ['', Validators.required],
-        menu_id: ['', Validators.required],
-        content: ['', Validators.required]
-      })
+      this.postForm = this.fb.group(this.POST_VALIDATION_RULES)
   }
 
   ngOnInit(): void {

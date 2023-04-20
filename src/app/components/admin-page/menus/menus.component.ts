@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Menu } from 'src/app/providers/menu';
 import { MenusService } from 'src/app/services/menus/menus.service';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { EditMenuComponent } from './edit-menu/edit-menu.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -21,6 +21,11 @@ export class MenusComponent implements OnInit, AfterViewInit {
     url: ''
   }
 
+  MENU_VALIDATION_RULES = {
+    title: ['', [Validators.required, Validators.minLength(6)]],
+    url: ['', [Validators.required, Validators.minLength(6)]]
+  };
+
   postForm: FormGroup;
 
   displayedColumns: string[] = ['id', 'title', 'url', 'actions'];
@@ -34,11 +39,7 @@ export class MenusComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
     private fb: FormBuilder
     ) {
-      this.postForm = this.fb.group({
-        title: ['', Validators.required],
-        url: ['', Validators.required]      
-      })
-
+      this.postForm = this.fb.group(this.MENU_VALIDATION_RULES)
   }
 
   ngOnInit(): void {
@@ -94,8 +95,8 @@ export class MenusComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== "false" && result) {
-        this.editMenu(menuId, result)
+      if (result !== "false" && result.valid) {
+        this.editMenu(menuId, result.value)
       }
     });
   }

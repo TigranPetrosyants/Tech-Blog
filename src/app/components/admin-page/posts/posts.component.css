@@ -21,3 +21,11 @@ td, th {
     display: flex;
     justify-content: flex-end;
 }
+
+.cdk-overlay-pane{
+    width: 600px;
+}
+
+.mdc-dialog__container {
+    width: 600px;
+}
