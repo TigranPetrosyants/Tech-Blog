@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit {
   menuList: Menu[];
   mobile: boolean = false;
 
-  public getScreenWidth: any;  
+  public getScreenWidth: number;  
 
   constructor(
     public auth: AuthService,

@@ -17,8 +17,8 @@ export class PostService {
       map(post => {
         return post.map(a => {
           const data = a.payload.doc.data() as Post;
-          const id = a.payload.doc.id;          
-          return {id, ...data}
+          data.id = a.payload.doc.id;          
+          return data;
         })
       })
     );
@@ -29,8 +29,8 @@ export class PostService {
       map(post => {
         return post.map(a => {
           const data = a.payload.doc.data() as Post;
-          const id = a.payload.doc.id;          
-          return {id, ...data}
+          data.id = a.payload.doc.id;          
+          return data;
         })
       })
     );

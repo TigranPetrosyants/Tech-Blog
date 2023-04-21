@@ -37,7 +37,7 @@ export class PostsComponent implements OnInit, AfterViewInit {
   POST_VALIDATION_RULES = {
     title: ['', [Validators.required, Validators.minLength(3)]],
     menu_id: ['', Validators.required],
-    content: ['', Validators.required, Validators.minLength(10)]
+    content: ['', [Validators.required, Validators.minLength(10)]]
   };
 
   postForm: FormGroup;

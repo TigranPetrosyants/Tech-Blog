@@ -4,6 +4,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PagesListComponent } from '../pages-list/pages-list.component';
 import { PagesComponent } from './pages/pages.component';
 import { SubscriberGuard } from 'src/app/guards/subscriber.guard';
+import { NgModule } from '@angular/core';
 
 
 
@@ -24,4 +25,9 @@ const routes: Routes = [
   }
 ];
 
-export const  FrontRoutingModule = RouterModule.forChild(routes);
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+
+export class FrontRoutingModule {}
