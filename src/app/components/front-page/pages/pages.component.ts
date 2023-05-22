@@ -16,15 +16,15 @@ export class PagesComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private menus: MenusService,
-    private posts: PostService
+    private menusService: MenusService,
+    private postsService: PostService
     ) {
     this.route.params.subscribe(params => {
-      this.menus.getConditionalMenus("url", "==", params.url).subscribe(
+      this.menusService.getConditionalMenus("url", "==", params.url).subscribe(
         menus => {
          if (menus.length) {
           this.menu = menus[0];
-          this.posts.getConditionalPosts("menu_id", "==", this.menu.id).subscribe(posts => {
+          this.postsService.getConditionalPosts("menu_id", "==", this.menu.id).subscribe(posts => {
             this.postList = posts;
            })
          }

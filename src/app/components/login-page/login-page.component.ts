@@ -10,14 +10,14 @@ import { User } from 'src/app/providers/user';
 export class LoginPageComponent implements OnInit {
   user: User;
 
-  constructor(public auth: AuthService) {
+  constructor(public authService: AuthService) {
   }
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => this.user = user)
+    this.authService.user$.subscribe(user => this.user = user)
   }
 
   login(): void {
-      this.auth.loginWithGoogle();
+      this.authService.loginWithGoogle();
   }
 
 }

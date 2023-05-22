@@ -7,12 +7,12 @@ import { AuthService } from '../providers/auth.service';
   providedIn: 'root'
 })
 export class SubscriberGuard implements CanActivate {
-  constructor(private auth: AuthService) {  }
+  constructor(private authService: AuthService) {  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.auth.user$.pipe(
+      return this.authService.user$.pipe(
         take(1),
         map(user => user && user.roles.subscriber ? true : false),
         tap(admin => {

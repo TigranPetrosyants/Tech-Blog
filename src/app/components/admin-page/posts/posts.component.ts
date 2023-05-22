@@ -42,8 +42,8 @@ export class PostsComponent implements OnInit, AfterViewInit {
   postForm: FormGroup;
 
   constructor(
-    private menus: MenusService,
-    private posts: PostService,
+    private menusService: MenusService,
+    private postsService: PostService,
     public dialog: MatDialog,
     private fb: FormBuilder
     ) {
@@ -51,13 +51,13 @@ export class PostsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.posts.getPosts()
+    this.postsService.getPosts()
     .subscribe(
       data => {
         this.dataSource.data = data; 
       }
     )
-    this.menus.getMenus()
+    this.menusService.getMenus()
     .subscribe(
       data => {
         this.menusList = data; 
@@ -81,17 +81,17 @@ export class PostsComponent implements OnInit, AfterViewInit {
 
   addPost() {
     if (this.postForm.valid) {
-      this.posts.addPost(this.postForm.value);
+      this.postsService.addPost(this.postForm.value);
     }
     
   }
 
   editPost(postId: string, post: Post) {
-    this.posts.updatePost(postId, post);
+    this.postsService.updatePost(postId, post);
   }
 
   deletePost(postId: string) {
-    this.posts.deletePost(postId);
+    this.postsService.deletePost(postId);
   }
 
   openDialog(postId: string): void {

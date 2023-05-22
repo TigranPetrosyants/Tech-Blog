@@ -18,12 +18,12 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    private menus: MenusService
+    private menusService: MenusService
     ) {
   }
   ngOnInit(): void {
     this.auth.user$.subscribe(user => this.user = user);
-    this.menus.getMenus().subscribe(menus => this.menuList = menus);
+    this.menusService.getMenus().subscribe(menus => this.menuList = menus);
 
     this.getScreenWidth = window.innerWidth;
   }

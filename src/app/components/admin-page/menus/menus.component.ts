@@ -34,7 +34,7 @@ export class MenusComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private menus: MenusService,
+    private menusService: MenusService,
     public dialog: MatDialog,
     private fb: FormBuilder
     ) {
@@ -42,7 +42,7 @@ export class MenusComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.menus.getMenus()
+    this.menusService.getMenus()
     .subscribe(
       data => {
         this.dataSource.data = data; 
@@ -66,16 +66,16 @@ export class MenusComponent implements OnInit, AfterViewInit {
 
   addMenu() {
     if (this.postForm.valid) {
-      this.menus.addMenu(this.postForm.value);
+      this.menusService.addMenu(this.postForm.value);
     }
   }
 
   editMenu(menuId: string, menu: Menu) {
-    this.menus.updateMenu(menuId, menu);
+    this.menusService.updateMenu(menuId, menu);
   }
 
   deleteMenu(menuId: string) {
-    this.menus.deleteMenu(menuId);
+    this.menusService.deleteMenu(menuId);
   }
 
   openDialog(menuId: string): void {
