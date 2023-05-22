@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Section } from 'src/app/providers/section';
+import { Section } from 'src/app/interfaces/section';
 
 @Component({
   selector: 'app-admin-page',

@@ -4,11 +4,21 @@
     <mat-form-field>
         <mat-label>Title</mat-label>
         <input matInput placeholder="Title" formControlName="title">
+
+        <div *ngIf="postForm.controls.title.touched && postForm.controls.title.invalid">
+          <span *ngIf="postForm.controls.title?.errors?.required" class="error-message">Title is required</span>
+          <span *ngIf="postForm.controls.title?.errors?.minlength" class="error-message">Minimal length is 6</span>
+        </div>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>URL</mat-label>
         <input matInput placeholder="URL" formControlName="url">
+
+        <div *ngIf="postForm.controls.url.touched && postForm.controls.url.invalid">
+          <span *ngIf="postForm.controls.url?.errors?.required" class="error-message">URL is required</span>
+          <span *ngIf="postForm.controls.url?.errors?.minlength" class="error-message">Minimal length is 6</span>
+        </div>
     </mat-form-field>
 
     <button class="add_button" mat-raised-button color="primary" (click)="addMenu()" [disabled]="!postForm.valid">Add Menu</button>
@@ -45,6 +55,7 @@
           <button mat-icon-button aria-label="edit" color="primary" (click)="openEditDialog(element.id, element.title, element.url)">
             <mat-icon>mode_edit</mat-icon>
           </button>
+          
           <button mat-icon-button aria-label="delete" color="warn" (click)="openDialog(element.id)">
             <mat-icon>delete</mat-icon>
           </button>

@@ -5,9 +5,11 @@
           <mat-card-title> {{post.title}} </mat-card-title>
           <mat-card-subtitle>Post Content</mat-card-subtitle>
         </mat-card-header>
+
         <mat-card-content>
           <p [innerHTML]="post.content"> </p>
         </mat-card-content>
+        
         <mat-card-actions>
           <button mat-icon-button color="primary"><i class="material-icons">favorite</i></button>
           <button mat-icon-button color="warn"><i class="material-icons">share</i></button>

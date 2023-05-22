@@ -3,6 +3,11 @@
       <mat-form-field>
         <mat-label>Title</mat-label>
         <input matInput placeholder="Title" formControlName="title">
+
+        <div *ngIf="postForm.controls.title.touched && postForm.controls.title.invalid">
+          <span *ngIf="postForm.controls.title?.errors?.required" class="error-message">Title is required</span>
+          <span *ngIf="postForm.controls.title?.errors?.minlength" class="error-message">Minimal length is 3</span>
+        </div>
       </mat-form-field>
 
       <mat-form-field>
@@ -10,18 +15,23 @@
           <mat-option *ngFor="let menu of menusList" [value]="menu.id">
             {{ menu.title }}
           </mat-option>
-        </mat-select>    
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field>
           <mat-label>Content</mat-label>
           <textarea matInput placeholder="Content" formControlName="content"></textarea>
+
+          <div *ngIf="postForm.controls.content.touched && postForm.controls.content.invalid">
+            <span *ngIf="postForm.controls.content?.errors?.required" class="error-message">Content is required</span>
+            <span *ngIf="postForm.controls.content?.errors?.minlength" class="error-message">Minimal length is 10</span>
+          </div>
       </mat-form-field>
 
       <button class="add_button" mat-raised-button color="primary" (click)="addPost()" [disabled]="!postForm.valid">Add Post</button>
-
   </form>
 </div>
+
 <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
@@ -53,12 +63,15 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
+
           <button mat-icon-button aria-label="edit" color="primary" (click)="openEditDialog(element.id, element.title, element.menu_id, element.content)">
             <mat-icon>mode_edit</mat-icon>
           </button>
+
           <button mat-icon-button aria-label="delete" color="warn" (click)="openDialog(element.id)">
             <mat-icon>delete</mat-icon>
           </button>
+          
         </td>
       </ng-container>
   

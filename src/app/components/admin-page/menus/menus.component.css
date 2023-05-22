@@ -21,3 +21,8 @@ td, th {
     display: flex;
     justify-content: flex-end;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+}

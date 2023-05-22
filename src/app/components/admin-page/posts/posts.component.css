@@ -29,3 +29,8 @@ td, th {
 .mdc-dialog__container {
     width: 600px;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+}

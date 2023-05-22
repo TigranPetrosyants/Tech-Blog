@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/providers/auth.service';
-import { Menu } from 'src/app/providers/menu';
-import { User } from 'src/app/providers/user';
+import { Menu } from 'src/app/interfaces/menu';
+import { User } from 'src/app/interfaces/user';
 import { MenusService } from 'src/app/services/menus/menus.service';
 
 @Component({

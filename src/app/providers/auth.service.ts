@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { Observable, of, Subject } from 'rxjs';
-import { User } from './user';
+import { User } from '../interfaces/user';
 import { switchMap, takeUntil } from "rxjs/operators";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
@@ -24,12 +24,13 @@ export class AuthService implements OnDestroy {
     this.user$ = auth.authState.pipe(
       takeUntil(this.unsubscribe$),
       switchMap(user => {
-      if (user) {
-        return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-      }else {
-        return of(null);
-      }
-    }))
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        }else {
+          return of(null);
+        }
+
+      }))
   }
 
   loginWithGoogle() {

@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Subject, takeUntil } from 'rxjs';
-import { Menu } from 'src/app/providers/menu';
+import { Menu } from 'src/app/interfaces/menu';
 
 @Injectable({
   providedIn: 'root'

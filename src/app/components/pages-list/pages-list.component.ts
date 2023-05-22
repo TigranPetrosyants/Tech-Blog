@@ -12,7 +12,7 @@ export class PagesListComponent implements OnInit {
 
   constructor(
     private db: AngularFireDatabase,
-    ) {  }
+    ) {}
   
   ngOnInit(): void {
     this.pages$ = this.db.list('pages').valueChanges()

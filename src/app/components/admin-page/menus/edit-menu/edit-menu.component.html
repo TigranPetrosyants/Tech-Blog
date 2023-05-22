@@ -5,11 +5,21 @@
         <mat-form-field>
             <mat-label>Title</mat-label>
             <input matInput [value]="" placeholder="Title" formControlName="title">
+
+            <div *ngIf="editForm.controls.title.touched && editForm.controls.title.invalid">
+                <span *ngIf="editForm.controls.title?.errors?.required" class="error-message">URL is required</span>
+                <span *ngIf="editForm.controls.title?.errors?.minlength" class="error-message">Minimal length is 6</span>
+            </div>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>URL</mat-label>
             <input matInput placeholder="URL" formControlName="url">
+            
+            <div *ngIf="editForm.controls.url.touched && editForm.controls.url.invalid">
+                <span *ngIf="editForm.controls.url?.errors?.required" class="error-message">URL is required</span>
+                <span *ngIf="editForm.controls.url?.errors?.minlength" class="error-message">Minimal length is 6</span>
+            </div>
         </mat-form-field>
 
     </mat-dialog-content>

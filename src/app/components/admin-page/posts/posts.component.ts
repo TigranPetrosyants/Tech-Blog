@@ -4,11 +4,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
-import { Post } from 'src/app/providers/post';
+import { Post } from 'src/app/interfaces/post';
 import { PostService } from 'src/app/services/posts/post.service';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { MenusService } from 'src/app/services/menus/menus.service';
-import { Menu } from 'src/app/providers/menu';
+import { Menu } from 'src/app/interfaces/menu';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

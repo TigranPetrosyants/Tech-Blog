@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Menu } from 'src/app/providers/menu';
-import { Post } from 'src/app/providers/post';
+import { Menu } from 'src/app/interfaces/menu';
+import { Post } from 'src/app/interfaces/post';
 import { MenusService } from 'src/app/services/menus/menus.service';
 import { PostService } from 'src/app/services/posts/post.service';
 
