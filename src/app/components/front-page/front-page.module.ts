@@ -9,8 +9,6 @@ import { PagesComponent } from './pages/pages.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
-
 @NgModule({
   declarations: [
     PagesListComponent,
@@ -19,11 +17,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NavBarComponent,
     PagesComponent,
   ],
-  imports: [
-    CommonModule,
-    FrontRoutingModule,
-    MaterialModule,
-    FlexLayoutModule
-  ]
+  imports: [CommonModule, FrontRoutingModule, MaterialModule, FlexLayoutModule],
 })
-export class FrontPageModule { }
+export class FrontPageModule {}

@@ -14,20 +14,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit, AfterViewInit {
   postDeteils: Post = {
     title: '',
     menu_id: '',
-    content: ''
-
-  }
+    content: '',
+  };
 
   menusList: Menu[];
 
-
-  displayedColumns: string[] = ['id', 'title', 'menu_id', 'content', 'actions'];
+  displayedColumns: string[] = ['id', 'title', 'menu_id', 'content', 'actions',];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -36,7 +34,7 @@ export class PostsComponent implements OnInit, AfterViewInit {
   POST_VALIDATION_RULES = {
     title: ['', [Validators.required, Validators.minLength(3)]],
     menu_id: ['', Validators.required],
-    content: ['', [Validators.required, Validators.minLength(10)]]
+    content: ['', [Validators.required, Validators.minLength(10)]],
   };
 
   postForm: FormGroup;
@@ -46,23 +44,18 @@ export class PostsComponent implements OnInit, AfterViewInit {
     private postsService: PostService,
     public dialog: MatDialog,
     private fb: FormBuilder
-    ) {
-      this.postForm = this.fb.group(this.POST_VALIDATION_RULES)
+  ) {
+    this.postForm = this.fb.group(this.POST_VALIDATION_RULES);
   }
 
   ngOnInit(): void {
-    this.postsService.getPosts()
-    .subscribe(
-      data => {
-        this.dataSource.data = data; 
-      }
-    )
-    this.menusService.getMenus()
-    .subscribe(
-      data => {
-        this.menusList = data; 
-      }
-    )
+    this.postsService.getPosts().subscribe((data) => {
+      this.dataSource.data = data;
+    });
+
+    this.menusService.getMenus().subscribe((data) => {
+      this.menusList = data;
+    });
   }
 
   ngAfterViewInit() {
@@ -83,7 +76,6 @@ export class PostsComponent implements OnInit, AfterViewInit {
     if (this.postForm.valid) {
       this.postsService.addPost(this.postForm.value);
     }
-    
   }
 
   editPost(postId: string, post: Post) {
@@ -95,26 +87,33 @@ export class PostsComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(postId: string): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-    });
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {});
 
-    dialogRef.afterClosed()
-    .subscribe(result => {
-      if (result === "true") {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'true') {
         this.deletePost(postId);
       }
     });
   }
 
-  openEditDialog(postId: string, title: string, menu_id: string, content: string): void {
+  openEditDialog(
+    postId: string,
+    title: string,
+    menu_id: string,
+    content: string,
+  ): void {
     const dialogRef = this.dialog.open(EditPostComponent, {
-      data: {title, menu_id, content, 'menus': this.menusList},
+      data: { 
+        title: title,
+        menu_id: menu_id,
+        content: content, 
+        menus: this.menusList,
+      },
     });
 
-    dialogRef.afterClosed()
-    .subscribe(result => {
-      if (result !== "false" && result) {
-        this.editPost(postId, result)
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== 'false' && result) {
+        this.editPost(postId, result);
       }
     });
   }

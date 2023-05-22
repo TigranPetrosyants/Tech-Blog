@@ -6,9 +6,8 @@
         <a matListItemTitle [routerLink]="link.link">{{ link.name }}</a>
       </mat-list-item>
     </mat-nav-list>
-
   </mat-drawer>
-  
+
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
       <i class="material-icons">menu</i>
@@ -17,4 +16,3 @@
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
-  

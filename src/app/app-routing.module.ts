@@ -5,20 +5,25 @@ import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
-    path: "admin", 
-    loadChildren: () => import('./components/admin-page/admin-page.module').then(m => m.AdminPageModule), 
-    canActivate: [AdminGuard]
+    path: 'admin',
+    loadChildren: () =>
+      import('./components/admin-page/admin-page.module').then(
+        (m) => m.AdminPageModule
+      ),
+    canActivate: [AdminGuard],
   },
   {
-    path: "", 
-    loadChildren: () => import('./components/front-page/front-page.module').then(m => m.FrontPageModule)
+    path: '',
+    loadChildren: () =>
+      import('./components/front-page/front-page.module').then(
+        (m) => m.FrontPageModule
+      ),
   },
-  { path: "login", component: LoginPageComponent },
-
+  { path: 'login', component: LoginPageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

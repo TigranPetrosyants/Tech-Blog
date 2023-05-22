@@ -4,7 +4,7 @@ import { Section } from 'src/app/interfaces/section';
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+  styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent {
   links: Section[] = [
@@ -15,6 +15,6 @@ export class AdminPageComponent {
     {
       name: 'Posts',
       link: 'posts',
-    }
+    },
   ];
 }

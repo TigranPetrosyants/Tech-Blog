@@ -5,7 +5,7 @@ import { User } from 'src/app/interfaces/user';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
   user: User;
@@ -13,11 +13,10 @@ export class LoginPageComponent implements OnInit {
   constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.user$.subscribe(user => this.user = user)
+    this.authService.user$.subscribe((user) => (this.user = user));
   }
 
   login(): void {
-      this.authService.loginWithGoogle();
+    this.authService.loginWithGoogle();
   }
-
 }

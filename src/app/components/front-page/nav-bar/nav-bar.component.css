@@ -1,48 +1,48 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .profileImg {
-    max-height: 30px;
-    max-width: 30px;
+  max-height: 30px;
+  max-width: 30px;
 }
 
-.userContainer{
-    display: flex;
-    align-items: center;
+.userContainer {
+  display: flex;
+  align-items: center;
 }
 
-.userContainer>img {
-    padding: 5px;
+.userContainer > img {
+  padding: 5px;
 }
 
-.navList{
-    display: flex;
+.navList {
+  display: flex;
 }
 
-mat-drawer-container{
-    color: white;
-    background-color: rgba(255, 255, 255, 0);
+mat-drawer-container {
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.example-sidenav{
-    opacity: 0.95;
-    position: absolute;
-    z-index: 3;
+.example-sidenav {
+  opacity: 0.95;
+  position: absolute;
+  z-index: 3;
 }
 
-.ng-star-inserted{
-    display: flex;
+.ng-star-inserted {
+  display: flex;
 }
 
-app-mobile-nav-bar{
-    display: flex;
+app-mobile-nav-bar {
+  display: flex;
 }
 
 .opacity-0 {
-    opacity: 0;
+  opacity: 0;
 }
 
 mat-sidenav-content {
-    margin-right: 0;
+  margin-right: 0;
 }

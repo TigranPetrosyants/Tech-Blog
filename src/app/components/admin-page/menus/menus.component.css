@@ -1,28 +1,28 @@
 table {
-    width: 100%;
-  }
-  
-.mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
+  width: 100%;
 }
-  
-td, th {
-    width: 25%;
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
 }
 
 .add_button {
-    margin: 0px 0px 20px 20px;
+  margin: 0px 0px 20px 20px;
 }
 
-
 .mat-column-actions {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .error-message {
-    color: red;
-    font-size: 0.9em;
+  color: red;
+  font-size: 0.9em;
 }

@@ -1,40 +1,43 @@
 .cards {
-    column-count: 3;
-    column-gap: 1;
-    padding: 10px;
+  column-count: 3;
+  column-gap: 1;
+  padding: 10px;
 }
 
 mat-card {
-    display: inline-block;
-    position: static;
-    margin: 10px;
-    break-inside: avoid;
-    width: 90%;
-    z-index: 2;
+  display: inline-block;
+  position: static;
+  margin: 10px;
+  break-inside: avoid;
+  width: 90%;
+  z-index: 2;
 }
 
-@media screen and (max-width: 1264px)  {
-    .cards {
-        column-count: 2;
-        column-gap: 1;
-        padding: 10px;
-    }
+@media screen and (max-width: 1264px) {
+  .cards {
+    column-count: 2;
+    column-gap: 1;
+    padding: 10px;
+  }
 }
 
-@media screen and (max-width: 725px)  {
-    .cards {
-        column-count: 1;
-        column-gap: 1;
-        padding: 10px;
-    }
+@media screen and (max-width: 725px) {
+  .cards {
+    column-count: 1;
+    column-gap: 1;
+    padding: 10px;
+  }
 }
-
 
 .cards {
-    background: rgb(247,230,214);
-    background: linear-gradient(180deg, rgba(247,230,214,1) 31%, rgba(192,235,244,1) 100%);
+  background: rgb(247, 230, 214);
+  background: linear-gradient(
+    180deg,
+    rgba(247, 230, 214, 1) 31%,
+    rgba(192, 235, 244, 1) 100%
+  );
 }
 
-mat-card-subtitle{
-    margin: 15px 0;
+mat-card-subtitle {
+  margin: 15px 0;
 }

@@ -12,25 +12,23 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
 import { EditMenuComponent } from './menus/edit-menu/edit-menu.component';
 import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
-
-
 @NgModule({
   declarations: [
-    DashboardComponent, 
+    DashboardComponent,
     AdminPageComponent,
     NavBarComponent,
     MenusComponent,
     PostsComponent,
     ConfirmationDialogComponent,
     EditMenuComponent,
-    EditPostComponent
+    EditPostComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class AdminPageModule { }
+export class AdminPageModule {}

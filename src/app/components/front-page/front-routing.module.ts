@@ -6,28 +6,25 @@ import { PagesComponent } from './pages/pages.component';
 import { SubscriberGuard } from 'src/app/guards/subscriber.guard';
 import { NgModule } from '@angular/core';
 
-
-
 const routes: Routes = [
   {
-    path: "", 
+    path: '',
     component: FrontPageComponent,
     children: [
-      { path: 'home', component: HomePageComponent},
-      { 
-        path: "article", 
+      { path: 'home', component: HomePageComponent },
+      {
+        path: 'article',
         component: PagesListComponent,
-        canActivate: [SubscriberGuard]
+        canActivate: [SubscriberGuard],
       },
-      { path: "pages/:url", component: PagesComponent },
-      { path: '**', pathMatch: 'full', redirectTo: 'home' }
-    ]
-  }
+      { path: 'pages/:url', component: PagesComponent },
+      { path: '**', pathMatch: 'full', redirectTo: 'home' },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
 export class FrontRoutingModule {}

@@ -5,18 +5,14 @@ import { User } from 'src/app/interfaces/user';
 @Component({
   selector: 'app-navbar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
   user: User;
 
-
-  constructor(public authService: AuthService) {
-  }
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.user$
-    .subscribe(user => this.user = user)
+    this.authService.user$.subscribe((user) => (this.user = user));
   }
-
 }
