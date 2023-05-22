@@ -12,17 +12,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-menus',
   templateUrl: './menus.component.html',
-  styleUrls: ['./menus.component.css']
+  styleUrls: ['./menus.component.css'],
 })
 export class MenusComponent implements OnInit, AfterViewInit {
   menuDeteils: Menu = {
     title: '',
-    url: ''
-  }
+    url: '',
+  };
 
   MENU_VALIDATION_RULES = {
     title: ['', [Validators.required, Validators.minLength(6)]],
-    url: ['', [Validators.required, Validators.minLength(6)]]
+    url: ['', [Validators.required, Validators.minLength(6)]],
   };
 
   postForm: FormGroup;
@@ -37,17 +37,14 @@ export class MenusComponent implements OnInit, AfterViewInit {
     private menusService: MenusService,
     public dialog: MatDialog,
     private fb: FormBuilder
-    ) {
-      this.postForm = this.fb.group(this.MENU_VALIDATION_RULES)
+  ) {
+    this.postForm = this.fb.group(this.MENU_VALIDATION_RULES);
   }
 
   ngOnInit(): void {
-    this.menusService.getMenus()
-    .subscribe(
-      data => {
-        this.dataSource.data = data; 
-      }
-    )
+    this.menusService.getMenus().subscribe((data) => {
+      this.dataSource.data = data;
+    });
   }
 
   ngAfterViewInit() {
@@ -79,12 +76,10 @@ export class MenusComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(menuId: string): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-    });
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {});
 
-    dialogRef.afterClosed()
-    .subscribe(result => {
-      if (result === "true") {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'true') {
         this.deleteMenu(menuId);
       }
     });
@@ -92,15 +87,16 @@ export class MenusComponent implements OnInit, AfterViewInit {
 
   openEditDialog(menuId: string, title: string, url: string): void {
     const dialogRef = this.dialog.open(EditMenuComponent, {
-      data: {title, url},
+      data: { 
+        title: title,
+        url: url 
+      },
     });
 
-    dialogRef.afterClosed()
-    .subscribe(result => {
-      if (result !== "false" && result) {
-        this.editMenu(menuId, result.value)
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== 'false' && result) {
+        this.editMenu(menuId, result.value);
       }
     });
   }
-
 }
