@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/providers/auth.service';
 import { Menu } from 'src/app/interfaces/menu';
 import { User } from 'src/app/interfaces/user';
@@ -12,7 +12,7 @@ import { MenusService } from 'src/app/services/menus/menus.service';
 export class NavBarComponent implements OnInit {
   user: User;
   menuList: Menu[];
-  mobile: boolean = false;
+  mobile = false;
 
   constructor(public auth: AuthService, private menusService: MenusService) {}
   ngOnInit(): void {

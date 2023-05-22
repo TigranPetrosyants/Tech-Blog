@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable, of, Subject } from 'rxjs';
 import { User } from '../interfaces/user';
+import { User as fireUser } from 'node_modules/@firebase/auth/dist/auth-public'
 import { switchMap, takeUntil } from 'rxjs/operators';
 import {
   AngularFirestore,
@@ -53,12 +54,13 @@ export class AuthService implements OnDestroy {
       })
       .catch((error) => {
         if (error.code === 'auth/popup-closed-by-user') {
+          return;
         }
       });
   }
 
-  updateUser(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc<User>(
+  updateUser(user: fireUser) {
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc<User>(
       `users/${user.uid}`
     );
 

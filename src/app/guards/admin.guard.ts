@@ -15,10 +15,7 @@ import { AuthService } from '../providers/auth.service';
 export class AdminGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService,) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ):
+  canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean

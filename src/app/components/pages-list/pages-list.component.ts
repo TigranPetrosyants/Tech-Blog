@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'pages-list',
+  selector: 'app-pages-list',
   templateUrl: './pages-list.component.html',
   styleUrls: ['./pages-list.component.css'],
 })
 export class PagesListComponent implements OnInit, OnDestroy {
-  pages: any;
+  pages: any[];
 
   private destroy$ = new Subject<void>();
 

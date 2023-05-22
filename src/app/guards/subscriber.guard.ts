@@ -14,10 +14,7 @@ import { AuthService } from '../providers/auth.service';
 export class SubscriberGuard implements CanActivate {
   constructor(private authService: AuthService) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
+  canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
