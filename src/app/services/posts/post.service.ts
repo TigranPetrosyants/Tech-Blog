@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs';
+import { map, Subject, takeUntil } from 'rxjs';
 import { Post } from 'src/app/providers/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     private afs: AngularFirestore
@@ -14,6 +15,7 @@ export class PostService {
 
   getPosts() {
     return this.afs.collection("posts").snapshotChanges().pipe(
+      takeUntil(this.unsubscribe$),
       map(post => {
         return post.map(a => {
           const data = a.payload.doc.data() as Post;
@@ -26,6 +28,7 @@ export class PostService {
 
   getConditionalPosts(field?: string, condition?: any, value?: string) {
     return this.afs.collection("posts", ref => ref.where(field, condition, value)).snapshotChanges().pipe(
+      takeUntil(this.unsubscribe$),
       map(post => {
         return post.map(a => {
           const data = a.payload.doc.data() as Post;
@@ -46,5 +49,10 @@ export class PostService {
 
   updatePost(postId: string, post: Post): void {
     this.afs.doc(`posts/${postId}`).update(post);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

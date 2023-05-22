@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs';
+import { map, Subject, takeUntil } from 'rxjs';
 import { Menu } from 'src/app/providers/menu';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenusService {
+export class MenusService implements OnDestroy {
+
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     private afs: AngularFirestore
@@ -14,6 +16,7 @@ export class MenusService {
 
   getMenus() {
     return this.afs.collection("menus").snapshotChanges().pipe(
+      takeUntil(this.unsubscribe$),
       map(menu => {
         return menu.map(a => {
           const data = a.payload.doc.data() as Menu;
@@ -26,6 +29,7 @@ export class MenusService {
 
   getConditionalMenus(field?: string, condition?: any, value?: string) {
     return this.afs.collection("menus", ref => ref.where(field, condition, value)).snapshotChanges().pipe(
+      takeUntil(this.unsubscribe$),
       map(menu => {
         return menu.map(a => {
           const data = a.payload.doc.data() as Menu;
@@ -46,5 +50,10 @@ export class MenusService {
 
   updateMenu(menuId: string, menu: Menu): void {
     this.afs.doc(`menus/${menuId}`).update(menu);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

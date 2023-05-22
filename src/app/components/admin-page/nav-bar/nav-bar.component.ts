@@ -10,9 +10,13 @@ import { User } from 'src/app/providers/user';
 export class NavBarComponent implements OnInit {
   user: User;
 
+
   constructor(public auth: AuthService) {
   }
+
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => this.user = user)
+    this.auth.user$
+    .subscribe(user => this.user = user)
   }
+
 }

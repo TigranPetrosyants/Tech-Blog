@@ -7,7 +7,7 @@ import { FrontPageComponent } from './front-page.component';
 import { MaterialModule } from 'src/app/material.module';
 import { PagesComponent } from './pages/pages.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { MobileNavBarComponent } from './nav-bar/mobile-nav-bar/mobile-nav-bar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -18,12 +18,12 @@ import { MobileNavBarComponent } from './nav-bar/mobile-nav-bar/mobile-nav-bar.c
     FrontPageComponent,
     NavBarComponent,
     PagesComponent,
-    MobileNavBarComponent
   ],
   imports: [
     CommonModule,
     FrontRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ]
 })
 export class FrontPageModule { }

@@ -15,7 +15,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./menus.component.css']
 })
 export class MenusComponent implements OnInit, AfterViewInit {
-
   menuDeteils: Menu = {
     title: '',
     url: ''
@@ -43,7 +42,8 @@ export class MenusComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.menus.getMenus().subscribe(
+    this.menus.getMenus()
+    .subscribe(
       data => {
         this.dataSource.data = data; 
       }
@@ -82,7 +82,8 @@ export class MenusComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .subscribe(result => {
       if (result === "true") {
         this.deleteMenu(menuId);
       }
@@ -94,10 +95,12 @@ export class MenusComponent implements OnInit, AfterViewInit {
       data: {title, url},
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== "false" && result.valid) {
+    dialogRef.afterClosed()
+    .subscribe(result => {
+      if (result !== "false" && result) {
         this.editMenu(menuId, result.value)
       }
     });
   }
+
 }

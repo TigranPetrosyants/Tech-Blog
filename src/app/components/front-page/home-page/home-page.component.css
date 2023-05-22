@@ -1,6 +1,6 @@
 .blogContainer {
     width: 100%;
-    height: calc(100% - 64px);
+    height: calc(100vh - 64px);
     display: flex;
     flex-direction: column;
     align-items: center;

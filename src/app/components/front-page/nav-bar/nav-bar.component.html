@@ -1,43 +1,83 @@
-<mat-toolbar color="primary">
+<div style="max-height: 65px;">
+  <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <button mat-button [routerLink]="['/']">JS Tech Blog</button>
-        <span class="spacer"></span>
-
-        <div class="navList" *ngIf="getScreenWidth > 800">
-          <div *ngFor="let menu of menuList">
-            <button mat-button [routerLink]="'pages/' + menu.url"> {{ menu.title }} </button>
-          </div>
   
-          <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Pro Blog</button>
-          <div *ngIf="!user">
-              <button mat-button (click)="auth.loginWithGoogle()">Login</button>
-          </div>
+      <button mat-button [routerLink]="['/']">JS Tech Blog</button>
+      <span class="spacer"></span>
+      <span class="menu-spacer"></span>
+      <div class="navList" fxShow="true" fxHide.lt-md>
+        <div *ngFor="let menu of menuList">
+          <button mat-button [routerLink]="'pages/' + menu.url"> {{ menu.title }} </button>
+        </div>
   
-          <div *ngIf="user">
-              <button mat-button [matMenuTriggerFor]="menu">
-                  <span class="userContainer">
-                      <span>Hello {{ user.displayName | titlecase }}</span>
-                      <img class="profileImg" [src]="user.photoURL" alt="profileImg">    
-                  </span>
+        <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Pro Blog</button>
+        <div *ngIf="!user">
+            <button mat-button (click)="auth.loginWithGoogle()">Login</button>
+        </div>
+  
+        <div *ngIf="user">
+            <button mat-button [matMenuTriggerFor]="menu">
+                <span class="userContainer">
+                    <span>Hello {{ user.displayName | titlecase }}</span>
+                    <img class="profileImg" [src]="user.photoURL" alt="profileImg">    
+                </span>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item disabled>
+                <mat-icon>account_circle</mat-icon>
+                <span>Account Settings</span>
               </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item disabled>
-                    <mat-icon>account_circle</mat-icon>
-                    <span>Account Settings</span>
-                  </button>
-                  <button mat-menu-item (click)="auth.logout()">
-                    <mat-icon>exit_to_app</mat-icon>
-                    <span>Log out</span>
-                  </button>
-                </mat-menu>
-          </div>
-
+              <button mat-menu-item (click)="auth.logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Log out</span>
+              </button>
+            </mat-menu>
         </div>
-
-        <div *ngIf="getScreenWidth < 800">
-          <app-mobile-nav-bar [user]="user" [menuList]="menuList"></app-mobile-nav-bar>
+      </div>
+      <div fxShow="true" fxHide.gt-sm class="userContainer">
+        <div *ngIf="user">
+          <button mat-button [matMenuTriggerFor]="menu">
+              <span class="userContainer">
+                  <img class="profileImg" [src]="user.photoURL" alt="profileImg">    
+              </span>
+          </button>
+            <mat-menu #menu="matMenu">
+              <span mat-menu-item>Hello {{user.displayName}}</span>
+              <button mat-menu-item disabled>
+                <mat-icon>account_circle</mat-icon>
+                <span>Account Settings</span>
+              </button>
+              <button mat-menu-item (click)="auth.logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Log out</span>
+              </button>
+            </mat-menu>
         </div>
+      </div>
+      <div *ngIf="!user">
+        <button fxShow="true" fxHide.gt-sm mat-button (click)="auth.loginWithGoogle()">Login</button>
+      </div>
+      
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-
-  </mat-toolbar-row>
-</mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav class="example-sidenav" mode="over" position="end" opened="false" #sidenav>
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button *ngIf="user?.roles.subscriber" [routerLink]="['/article']">Pro Blog</button>
+        </mat-list-item>
+        <mat-list-item *ngFor="let menu of menuList">
+          <button mat-button [routerLink]="'pages/' + menu.url"> {{ menu.title }} </button>
+        </mat-list-item>      
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

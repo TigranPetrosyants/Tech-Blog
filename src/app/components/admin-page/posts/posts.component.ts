@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { Post } from 'src/app/providers/post';
 import { PostService } from 'src/app/services/posts/post.service';
@@ -17,7 +17,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit, AfterViewInit {
-
   postDeteils: Post = {
     title: '',
     menu_id: '',
@@ -52,12 +51,14 @@ export class PostsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.posts.getPosts().subscribe(
+    this.posts.getPosts()
+    .subscribe(
       data => {
         this.dataSource.data = data; 
       }
     )
-    this.menus.getMenus().subscribe(
+    this.menus.getMenus()
+    .subscribe(
       data => {
         this.menusList = data; 
       }
@@ -97,7 +98,8 @@ export class PostsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .subscribe(result => {
       if (result === "true") {
         this.deletePost(postId);
       }
@@ -109,7 +111,8 @@ export class PostsComponent implements OnInit, AfterViewInit {
       data: {title, menu_id, content, 'menus': this.menusList},
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .subscribe(result => {
       if (result !== "false" && result) {
         this.editPost(postId, result)
       }

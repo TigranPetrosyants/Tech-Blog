@@ -10,6 +10,7 @@ mat-card {
     margin: 10px;
     break-inside: avoid;
     width: 90%;
+    z-index: 2;
 }
 
 @media screen and (max-width: 1264px)  {

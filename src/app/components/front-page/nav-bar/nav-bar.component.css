@@ -26,8 +26,9 @@ mat-drawer-container{
 }
 
 .example-sidenav{
-    top: 52px;
     opacity: 0.95;
+    position: absolute;
+    z-index: 3;
 }
 
 .ng-star-inserted{
@@ -38,3 +39,10 @@ app-mobile-nav-bar{
     display: flex;
 }
 
+.opacity-0 {
+    opacity: 0;
+}
+
+mat-sidenav-content {
+    margin-right: 0;
+}

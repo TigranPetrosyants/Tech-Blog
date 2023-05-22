@@ -8,9 +8,10 @@
       <mat-form-field>
         <mat-select placeholder="Select Menu" formControlName="menu_id">
           <mat-option *ngFor="let menu of menusList" [value]="menu.id">
-            {{menu.title}}
+            {{ menu.title }}
           </mat-option>
-      </mat-select>    </mat-form-field>
+        </mat-select>    
+      </mat-form-field>
 
       <mat-form-field>
           <mat-label>Content</mat-label>

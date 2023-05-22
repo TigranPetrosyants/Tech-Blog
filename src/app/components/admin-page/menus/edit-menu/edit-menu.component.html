@@ -1,18 +1,21 @@
 <h2 mat-dialog-title>Edit</h2>
 <form [formGroup]="editForm">
     <mat-dialog-content>
+        
         <mat-form-field>
             <mat-label>Title</mat-label>
             <input matInput [value]="" placeholder="Title" formControlName="title">
         </mat-form-field>
+
         <mat-form-field>
             <mat-label>URL</mat-label>
             <input matInput placeholder="URL" formControlName="url">
         </mat-form-field>
+
     </mat-dialog-content>
     
     <mat-dialog-actions>
         <button mat-raised-button [mat-dialog-close]="editForm">Yes</button>
-        <button mat-raised-button mat-dialog-close="false">Cancle</button>    
+        <button mat-raised-button [mat-dialog-close]="false">Cancle</button>    
     </mat-dialog-actions>
 </form>
