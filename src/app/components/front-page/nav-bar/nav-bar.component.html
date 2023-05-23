@@ -5,7 +5,7 @@
       <span class="spacer"></span>
       <span class="menu-spacer"></span>
 
-      <div class="navList" fxShow="true" fxHide.lt-md>
+      <div class="nav-list" fxShow="true" fxHide.lt-md>
         <div *ngFor="let menu of menuList">
           <button mat-button [routerLink]="'pages/' + menu.url">
             {{ menu.title }}
@@ -26,9 +26,9 @@
 
         <div *ngIf="user">
           <button mat-button [matMenuTriggerFor]="menu">
-            <span class="userContainer">
+            <span class="user-container">
               <span>Hello {{ user.displayName | titlecase }}</span>
-              <img class="profileImg" [src]="user.photoURL" alt="profileImg" />
+              <img class="profile-img" [src]="user.photoURL" alt="profile image" />
             </span>
           </button>
 
@@ -45,11 +45,11 @@
           </mat-menu>
         </div>
       </div>
-      <div fxShow="true" fxHide.gt-sm class="userContainer">
+      <div fxShow="true" fxHide.gt-sm class="user-container">
         <div *ngIf="user">
           <button mat-button [matMenuTriggerFor]="menu">
-            <span class="userContainer">
-              <img class="profileImg" [src]="user.photoURL" alt="profileImg" />
+            <span class="user-container">
+              <img class="profile-img" [src]="user.photoURL" alt="profile image" />
             </span>
           </button>
 

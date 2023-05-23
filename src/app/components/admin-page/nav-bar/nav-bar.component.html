@@ -9,9 +9,9 @@
 
     <div *ngIf="user">
       <button mat-button [matMenuTriggerFor]="menu">
-        <span class="userContainer">
+        <span class="user-container">
           <span>Hello {{ user.displayName | titlecase }}</span>
-          <img class="profileImg" [src]="user.photoURL" alt="profileImg" />
+          <img class="profile-img" [src]="user.photoURL" alt="profile Image" />
         </span>
       </button>
       <mat-menu #menu="matMenu">
