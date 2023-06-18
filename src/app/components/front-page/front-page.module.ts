@@ -8,6 +8,8 @@ import { MaterialModule } from 'src/app/material.module';
 import { PagesComponent } from './pages/pages.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginPageComponent } from '../login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FrontPageComponent,
     NavBarComponent,
     PagesComponent,
+    LoginPageComponent,
   ],
-  imports: [CommonModule, FrontRoutingModule, MaterialModule, FlexLayoutModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FrontRoutingModule,
+    MaterialModule,
+    FlexLayoutModule,
+  ],
 })
 export class FrontPageModule {}

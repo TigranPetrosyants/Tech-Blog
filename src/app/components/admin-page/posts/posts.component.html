@@ -2,7 +2,12 @@
   <form [formGroup]="postForm">
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Title" formControlName="title" />
+      <input
+        matInput
+        placeholder="Title"
+        formControlName="title"
+        data-qa="title"
+      />
 
       <div
         *ngIf="
@@ -23,8 +28,16 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Select Menu" formControlName="menu_id">
-        <mat-option *ngFor="let menu of menusList" [value]="menu.id">
+      <mat-select
+        placeholder="Select Menu"
+        formControlName="menu_id"
+        data-qa="menu-select"
+      >
+        <mat-option
+          *ngFor="let menu of menusList"
+          [value]="menu.id"
+          [attr.data-qa]="menu.title"
+        >
           {{ menu.title }}
         </mat-option>
       </mat-select>
@@ -36,6 +49,7 @@
         matInput
         placeholder="Content"
         formControlName="content"
+        data-qa="content"
       ></textarea>
 
       <div
@@ -62,6 +76,7 @@
       color="primary"
       (click)="addPost()"
       [disabled]="!postForm.valid"
+      data-qa="add-post"
     >
       Add Post
     </button>

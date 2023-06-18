@@ -1,4 +1,73 @@
-<div *ngIf="!user">
-  <h1>Login to acc</h1>
-  <button (click)="login()">Login</button>
+<div class="login-page">
+  <div class="container-flex container" *ngIf="!user">
+    <div class="topic">
+      <h2>Login / Register</h2>
+    </div>
+    <form
+      class="container-flex"
+      [formGroup]="signInForm"
+      (ngSubmit)="login()"
+      novalidate
+    >
+      <input
+        type="email"
+        name="email"
+        formControlName="email"
+        placeholder="E-Mail"
+        data-qa="email"
+        required
+      />
+      <div
+        *ngIf="
+          signInForm.controls['email'].invalid &&
+          (signInForm.controls['email'].dirty ||
+            signInForm.controls['email'].touched)
+        "
+        class="error"
+      >
+        <div *ngIf="signInForm.controls['email'].errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="signInForm.controls['email'].errors.email">
+          Invalid email format.
+        </div>
+        <div
+        *ngIf="signInForm.controls['email'].errors?.minlength"
+        class="error-message"
+      >
+        Minimal length is 6
+      </div>
+      </div>
+
+      <input
+        type="password"
+        name="password"
+        formControlName="password"
+        placeholder="Password"
+        data-qa="password"
+        required
+      />
+      <div
+        *ngIf="
+          signInForm.controls['password'].invalid &&
+          (signInForm.controls['password'].dirty ||
+            signInForm.controls['password'].touched)
+        "
+        class="error"
+      >
+        <div *ngIf="signInForm.controls['password'].errors.required">
+          Password is required.
+        </div>
+        <div
+          *ngIf="signInForm.controls['password'].errors?.minlength"
+          class="error-message"
+        >
+          Minimal length is 6
+        </div>
+      </div>
+      <button data-qa="login" type="submit" [disabled]="signInForm.invalid">
+        Login
+      </button>
+    </form>
+  </div>
 </div>

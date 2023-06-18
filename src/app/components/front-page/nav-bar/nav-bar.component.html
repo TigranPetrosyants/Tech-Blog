@@ -1,13 +1,17 @@
 <div style="max-height: 65px">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <button mat-button [routerLink]="['/']">JS Tech Blog</button>
+      <button data-qa="logo" mat-button [routerLink]="['/']">JS Tech Blog</button>
       <span class="spacer"></span>
       <span class="menu-spacer"></span>
 
       <div class="nav-list" fxShow="true" fxHide.lt-md>
         <div *ngFor="let menu of menuList">
-          <button mat-button [routerLink]="'pages/' + menu.url">
+          <button
+            [attr.data-qa]="menu.title"
+            mat-button
+            [routerLink]="'pages/' + menu.url"
+          >
             {{ menu.title }}
           </button>
         </div>
@@ -21,14 +25,24 @@
         </button>
 
         <div *ngIf="!user">
-          <button mat-button (click)="auth.loginWithGoogle()">Login</button>
+          <button
+            data-qa="login-button"
+            mat-button
+            (click)="auth.loginWithGoogle()"
+          >
+            Login Google
+          </button>
         </div>
 
         <div *ngIf="user">
           <button mat-button [matMenuTriggerFor]="menu">
             <span class="user-container">
               <span>Hello {{ user.displayName | titlecase }}</span>
-              <img class="profile-img" [src]="user.photoURL" alt="profile image" />
+              <img
+                class="profile-img"
+                [src]="user.photoURL"
+                alt="profile image"
+              />
             </span>
           </button>
 
@@ -49,7 +63,11 @@
         <div *ngIf="user">
           <button mat-button [matMenuTriggerFor]="menu">
             <span class="user-container">
-              <img class="profile-img" [src]="user.photoURL" alt="profile image" />
+              <img
+                class="profile-img"
+                [src]="user.photoURL"
+                alt="profile image"
+              />
             </span>
           </button>
 
@@ -70,13 +88,16 @@
       </div>
 
       <div *ngIf="!user">
+        <button data-qa="login-button" mat-button [routerLink]="['/login']">
+          Login Email
+        </button>
         <button
           fxShow="true"
           fxHide.gt-sm
           mat-button
           (click)="auth.loginWithGoogle()"
         >
-          Login
+          Login Google
         </button>
       </div>
 
