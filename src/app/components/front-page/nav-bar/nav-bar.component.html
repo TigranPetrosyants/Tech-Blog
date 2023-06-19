@@ -24,13 +24,13 @@
           Pro Blog
         </button>
 
-        <div *ngIf="!user">
+        <div *ngIf="!user && !cypress">
           <button
             data-qa="login-button"
             mat-button
             (click)="auth.loginWithGoogle()"
           >
-            Login Google
+            Login
           </button>
         </div>
 
@@ -88,16 +88,18 @@
       </div>
 
       <div *ngIf="!user">
-        <button data-qa="login-button" mat-button [routerLink]="['/login']">
-          Login Email
+        <button *ngIf="cypress" data-qa="login-button" mat-button [routerLink]="['/login']">
+          Login
         </button>
+
         <button
           fxShow="true"
           fxHide.gt-sm
           mat-button
+          *ngIf="!cypress"
           (click)="auth.loginWithGoogle()"
         >
-          Login Google
+          Login
         </button>
       </div>
 
